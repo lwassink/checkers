@@ -1,7 +1,8 @@
 .square {
-  display: inline-block;
-  height: 20px;
-  width: 20px;
+  display: block;
+  float: left;
+  height: 12.5%;
+  width: 12.5%;
 }
 
 .black {
@@ -9,6 +10,16 @@
 }
 
 .white {
-  background-color: white;
+  background-color: red;
+}
+
+$length: 8 * 60px;
+
+.board {
+  margin: 0 auto;
+  margin-top: 50px;
+  display: block;
+  height: $length;
+  width: $length;
 }
 

@@ -7,11 +7,25 @@ class Board extends React.Component {
   }
 
   render() {
+    const positions = [];
+    for (let i = 0; i < 64; i++) {
+      positions.push([Math.floor(i/8), i % 8]);
+    }
+
     return (
-      <Square color='black' />
+      <ul className="board">
+        {positions.map((pos, idx) => (
+          <Square
+            key={idx}
+            pos={pos}
+          />
+        ))}
+      </ul>
     );
   }
 }
 
 export default Board;
+
+
 

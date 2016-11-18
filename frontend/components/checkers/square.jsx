@@ -1,18 +1,12 @@
 import React from 'react';
 
-class Square extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export default ({ pos }) => {
+  const color = (pos[0] + pos[1]) % 2 == 0 ? 'white' : 'black';
+  const cls = color + ' square';
 
-  render() {
-    const cls = this.props.color + ' square';
-    return (
-      <div className={ cls }>
-      </div>
-    );
-  }
+  return (
+    <li className={ cls }>
+    </li>
+  );
 }
-
-export default Square;
 
