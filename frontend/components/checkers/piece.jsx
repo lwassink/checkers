@@ -13,16 +13,26 @@ function collect(connect, monitor) {
 
 class Piece extends React.Component {
   render() {
-    const { isDragging, connectDragSource, connectDragPreview } = this.props;
+    const { isDragging,
+      connectDragSource,
+      connectDragPreview,
+      myTurn } = this.props;
+    const { color, king } = this.props.piece;
     let classes = classNames('piece',
       { 'dragging': isDragging },
-      this.props.color
+      { 'light-piece': color === 'light' },
+      { 'dark-piece': color === 'dark' },
+      { 'active': myTurn }
     )
 
     return connectDragSource(
-      <div style={{opacity: .99}}>
+      <div
+        style={{opacity: .99}}>
         {connectDragPreview(
-          <div className={classes} />
+          <div
+            className={classes}
+            onDoubleClick={this.props.remove}
+          />
         )}
       </div>
     );

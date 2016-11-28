@@ -28,27 +28,42 @@ const darkLocations = [
   [7,6],
 ]
 
-const boardSetup = {};
+const pieces = {};
 
 lightLocations.forEach((pos, idx) => {
-  boardSetup[idx + 1] = {
+  pieces[idx + 1] = {
     id: idx + 1,
-    color: 'light-piece',
+    color: 'light',
     pos: pos,
     king: false
   };
 });
 
 darkLocations.forEach((pos, idx) => {
-  boardSetup[idx + 13] = {
+  pieces[idx + 13] = {
     id: idx + 13,
-    color: 'dark-piece',
+    color: 'dark',
     pos: pos,
     king: false
   };
 });
 
+
+const players = {
+  1: {
+    id: 1,
+    color: 'light'
+  },
+  2: {
+    id: 2,
+    color: 'dark'
+  },
+  currentPlayer: 1
+}
+
+
 export default {
-  pieces: boardSetup
+  pieces,
+  players
 };
 

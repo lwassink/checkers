@@ -34,6 +34,7 @@ class Board extends React.Component {
             pos={pos}
             ocupied={this.ocupied(pos)}
             move={id => this.props.move(id, pos)}
+            switchPlayers={this.props.switchPlayers}
           />
         ))}
       </ul>
