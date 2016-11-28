@@ -1,14 +1,69 @@
+$square-size: 60px;
+
 .square {
-  display: inline-block;
+  display: block;
+  float: left;
+  height: 12.5%;
+  width: 12.5%;
+  position: relative;
+
+  p {
+    color: green;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+  }
+}
+
+.piece {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  top: 5px;
+  left: 5px;
+  opacity: 1;
+}
+
+.dragging {
+  opacity: 0.5;
+}
+
+.dark-square {
+  background-color: #6f3519;
+}
+
+.light-square {
+  background-color: tan;
+}
+
+.dark-piece {
+  background-color: black;
+}
+
+.light-piece {
+  background-color: red;
+}
+
+.selected {
+  background-color: white;
+}
+
+.preview {
+  border: 10px solid blue;
+  display: block;
   height: 20px;
   width: 20px;
 }
 
-.black {
-  background-color: black;
-}
+$length: 8 * $square-size;
 
-.white {
-  background-color: white;
+.board {
+  margin: 0 auto;
+  margin-top: 50px;
+  display: block;
+  height: $length;
+  width: $length;
 }
 
