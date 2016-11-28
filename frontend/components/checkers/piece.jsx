@@ -16,7 +16,7 @@ class Piece extends React.Component {
     const { isDragging, connectDragSource, connectDragPreview } = this.props;
     let classes = classNames('piece',
       { 'dragging': isDragging },
-      'dark-piece'
+      this.props.color
     )
 
     return connectDragSource(

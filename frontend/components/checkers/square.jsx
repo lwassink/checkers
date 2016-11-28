@@ -1,5 +1,5 @@
 import React from 'react';
-import Piece from './pieces.jsx';
+import PieceContainer from './piece_container.js';
 import { PIECE, squareTarget } from '../../drag/specs.js';
 import { DropTarget } from 'react-dnd';
 import classNames from 'classnames';
@@ -18,7 +18,7 @@ class Square extends React.Component {
     const color = (pos[0] + pos[1]) % 2 == 0 ? 'light-square' : 'dark-square';
     const cls = classNames(color, ' square');
 
-    const piece = ocupied ? <Piece key={1} id={1} /> : null;
+    const piece = ocupied ? <PieceContainer key={ocupied} id={ocupied} /> : null;
 
     return connectDropTarget(
       <li

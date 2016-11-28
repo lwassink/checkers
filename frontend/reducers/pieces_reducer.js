@@ -1,4 +1,4 @@
-import { MOVE_PIECE } from '../actions/checkers_actions.js';
+import { MOVE_PIECE, REMOVE_PIECE } from '../actions/pieces_actions.js';
 
 export default (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -6,7 +6,10 @@ export default (oldState = {}, action) => {
 
   switch(action.type) {
     case MOVE_PIECE:
-      newState[action.pieceId].pos = action.targetPos;
+      newState[action.id].pos = action.pos;
+      return newState;
+    case REMOVE_PIECE:
+      delete newState[action.id];
       return newState;
     default:
       return oldState;

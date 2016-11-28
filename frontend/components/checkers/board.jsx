@@ -7,10 +7,14 @@ class Board extends React.Component {
   }
 
   ocupied(pos) {
+    const { pieces } = this.props;
+
     let ocupied = false;
-    this.props.ocupiedSquares.forEach(square => {
-      if (square[0] === pos[0] && square[1] === pos[1]) {
-        ocupied = true;
+    _.keys(pieces).forEach(id => {
+      const X = pieces[id].pos[0];
+      const Y = pieces[id].pos[1];
+      if (X === pos[0] && Y === pos[1]) {
+        ocupied = id;
       }
     });
     return ocupied;
@@ -29,7 +33,7 @@ class Board extends React.Component {
             key={idx}
             pos={pos}
             ocupied={this.ocupied(pos)}
-            move={() => this.props.move(pos)}
+            move={id => this.props.move(id, pos)}
           />
         ))}
       </ul>

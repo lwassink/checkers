@@ -1,16 +1,13 @@
 import { connect } from 'react-redux';
 import Board from './board.jsx';
-import { movePiece } from '../../actions/checkers_actions.js';
-import { piecesByPos } from '../../selectors/checkers_selectors.js';
+import { movePiece } from '../../actions/pieces_actions.js';
 
 const mapStateToProps = (state, ownProps) => ({
-  ocupiedSquares: _.keys(state.checkers).map(key => (
-    state.checkers[key].pos
-  ))
+  pieces: state.pieces
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  move: pos => dispatch(movePiece(1, pos))
+  move: (id, pos) => dispatch(movePiece(id, pos))
 });
 
 export default connect(

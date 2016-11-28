@@ -7,8 +7,11 @@ export const pieceSource = {
 };
 
 export const squareTarget = {
-  drop: (props) => {
-    props.move()
+  drop: (props, monitor, component) => {
+    props.move(monitor.getItem().id);
+  },
+  canDrop: (props, monitor) => {
+    return (props.pos[0] + props.pos[1]) % 2 === 1
   }
 };
 

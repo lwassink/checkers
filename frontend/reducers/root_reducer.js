@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import CheckersReducer from './checkers_reducer.js';
+import PiecesReducer from './pieces_reducer.js';
 
 export default combineReducers({
-  checkers: CheckersReducer
+  pieces: PiecesReducer
 });
 
