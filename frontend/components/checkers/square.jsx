@@ -12,17 +12,16 @@ function collect(connect, monitor) {
 
 class Square extends React.Component {
   render() {
-    const { pos, ocupied, onClick, selected } = this.props;
+    const { pos, ocupied } = this.props;
     const { connectDropTarget } = this.props;
 
     const color = (pos[0] + pos[1]) % 2 == 0 ? 'light-square' : 'dark-square';
-    const cls = classNames(color, ' square', selected);
+    const cls = classNames(color, ' square');
 
     const piece = ocupied ? <Piece key={1} id={1} /> : null;
 
     return connectDropTarget(
       <li
-        onClick={onClick}
         className={cls}>
         {piece}
       </li>
