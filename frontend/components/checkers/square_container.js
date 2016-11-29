@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Square from './square.jsx';
-import { movePiece } from '../../actions/pieces_actions.js';
+import { movePiece, removePiece } from '../../actions/pieces_actions.js';
 import { switchPlayers } from '../../actions/player_actions.js';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   move: id => dispatch(movePiece(id, ownProps.pos)),
-  switchPlayers: () => dispatch(switchPlayers())
+  switchPlayers: () => dispatch(switchPlayers()),
+  removePiece: id => dispatch(removePiece(id))
 });
 
 export default connect(

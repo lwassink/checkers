@@ -5,8 +5,11 @@ class Game {
 
   validMove(id, pos) {
     const piece = this.pieces[id]
-    return ( this.allowedMove(piece, pos) ||
-      this.wouldCapture(piece, pos) ) &&
+    return (
+      ( this.allowedMove(piece, pos) &&
+        !this.canCapture(piece.color) ) ||
+      this.wouldCapture(piece, pos)
+    ) &&
       !this.ocupied(pos);
   }
 
@@ -30,6 +33,17 @@ class Game {
         && this.jumps(piece.pos, pos, piece.color)) return true;
     }
     return false
+  }
+
+  canCapture(color) {
+    const pieces = _.filter(this.pieces, { color });
+    for (let i = 0; i < pieces.length; i ++) {
+      const moves = this.captureMoves(pieces[i]);
+      for (let j = 0; j < moves.length; j++) {
+        if (this.wouldCapture(pieces[i], moves[j])) return true;
+      }
+    }
+    return false;
   }
 
   ocupied(pos) {

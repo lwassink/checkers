@@ -11,6 +11,11 @@ export const pieceSource = {
 
 export const squareTarget = {
   drop: (props, monitor, component) => {
+    const game = new Game(props.pieces);
+
+    const captureId = game.capturedPiece(monitor.getItem().id, props.pos).id;
+    if (captureId) props.removePiece(captureId);
+
     props.move(monitor.getItem().id);
     props.switchPlayers();
   },
