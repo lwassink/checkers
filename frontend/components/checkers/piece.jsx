@@ -31,9 +31,7 @@ class Piece extends React.Component {
         {connectDragPreview(
           <div
             className={classes}
-            onDoubleClick={this.props.remove}
-          />
-        )}
+          />)}
       </div>
     );
   }

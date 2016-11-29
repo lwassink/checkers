@@ -16,12 +16,11 @@ $square-size: 60px;
 }
 
 .piece {
-  position: absolute;
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  top: 5px;
-  left: 5px;
+  margin-left: 5px;
+  margin-top: 5px;
   opacity: 1;
   // box-shadow: 3px 3px 2px black;
 }
