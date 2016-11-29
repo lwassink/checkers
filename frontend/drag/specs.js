@@ -1,3 +1,5 @@
+import Game from '../game/game.js';
+
 export const PIECE = 'piece';
 
 export const pieceSource = {
@@ -13,7 +15,8 @@ export const squareTarget = {
     props.switchPlayers();
   },
   canDrop: (props, monitor) => {
-    return (props.pos[0] + props.pos[1]) % 2 === 1
+    const game = new Game(props.pieces);
+    return game.validMove(monitor.getItem().id, props.pos);
   }
 };
 

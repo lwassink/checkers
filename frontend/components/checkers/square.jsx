@@ -14,8 +14,17 @@ function collect(connect, monitor) {
 
 class Square extends React.Component {
   render() {
-    const { pos, ocupied } = this.props;
+    const { pos, pieces } = this.props;
     const { connectDropTarget, isOver, canDrop } = this.props;
+
+    let ocupied = false;
+    _.keys(pieces).forEach(id => {
+      const X = pieces[id].pos[0];
+      const Y = pieces[id].pos[1];
+      if (X === pos[0] && Y === pos[1]) {
+        ocupied = id;
+      }
+    });
 
     const color = (pos[0] + pos[1]) % 2 == 0 ? 'light-square' : 'dark-square';
     const cls = classNames(
@@ -35,5 +44,8 @@ class Square extends React.Component {
   }
 }
 
-export default DropTarget(PIECE, squareTarget, collect)(Square);
-
+export default DropTarget(
+  PIECE,
+  squareTarget,
+  collect)
+(Square);

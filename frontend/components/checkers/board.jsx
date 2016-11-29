@@ -1,23 +1,9 @@
 import React from 'react';
-import Square from './square.jsx';
+import SquareContainer from './square_container.js';
 
 class Board extends React.Component {
   constructor(props) {
     super(props);
-  }
-
-  ocupied(pos) {
-    const { pieces } = this.props;
-
-    let ocupied = false;
-    _.keys(pieces).forEach(id => {
-      const X = pieces[id].pos[0];
-      const Y = pieces[id].pos[1];
-      if (X === pos[0] && Y === pos[1]) {
-        ocupied = id;
-      }
-    });
-    return ocupied;
   }
 
   render() {
@@ -29,12 +15,9 @@ class Board extends React.Component {
     return (
       <ul className="board">
         {positions.map((pos, idx) => (
-          <Square
+          <SquareContainer
             key={idx}
             pos={pos}
-            ocupied={this.ocupied(pos)}
-            move={id => this.props.move(id, pos)}
-            switchPlayers={this.props.switchPlayers}
           />
         ))}
       </ul>
@@ -43,4 +26,3 @@ class Board extends React.Component {
 }
 
 export default Board;
-
