@@ -7,7 +7,8 @@ function collect(connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
-    isDragging: monitor.isDragging()
+    isDragging: monitor.isDragging(),
+    canDrag: monitor.canDrag()
   };
 }
 
@@ -16,6 +17,7 @@ class Piece extends React.Component {
     const { isDragging,
       connectDragSource,
       connectDragPreview,
+      canDrag,
       myTurn } = this.props;
 
     const piece = this.props.piece || {
@@ -27,7 +29,7 @@ class Piece extends React.Component {
       { 'dragging': isDragging },
       { 'light-piece': color === 'light' },
       { 'dark-piece': color === 'dark' },
-      { 'active': myTurn },
+      { 'active': canDrag },
       { 'king': king }
     )
 

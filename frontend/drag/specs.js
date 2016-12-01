@@ -6,7 +6,15 @@ export const pieceSource = {
   beginDrag: (props, monitor, component) => ({
     id: props.id
   }),
-  canDrag: props => props.myTurn
+  canDrag: props => {
+    if (props.myTurn) {
+      if (props.currentPiece) {
+        return props.currentPiece === props.id;
+      }
+      return true;
+    }
+    return false;
+  }
 };
 
 export const squareTarget = {
@@ -16,20 +24,10 @@ export const squareTarget = {
     const captureId = game.capturedPiece(id, props.pos).id;
     let currentPiece = null;
 
-    // console.log('pos');
-    // console.log(props.pos);
-    // console.log('id:');
-    // console.log(id);
-    // console.log('cpature id:');
-    // console.log(captureId);
-
     // capture by jumping
     if (captureId) {
       props.removePiece(captureId);
       currentPiece = id;
-      console.log('Captured!');
-      console.log(currentPiece);
-      console.log(props.pos);
     }
 
     // don't switch players if the current piece can capture again
