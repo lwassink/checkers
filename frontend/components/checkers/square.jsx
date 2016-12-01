@@ -33,7 +33,9 @@ class Square extends React.Component {
       {droppable: isOver && canDrop}
     );
 
-    const piece = ocupied ? <PieceContainer key={ocupied} id={ocupied} /> : null;
+    const piece = ocupied ?
+      <PieceContainer key={ocupied} id={ocupied} /> :
+      null;
 
     return connectDropTarget(
       <li
@@ -49,3 +51,4 @@ export default DropTarget(
   squareTarget,
   collect)
 (Square);
+

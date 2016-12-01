@@ -1,7 +1,9 @@
-import { SWITCH_PLAYERS } from '../actions/player_actions.js';
+import { SWITCH_PLAYERS,
+  SET_CURRENT_PIECE } from '../actions/player_actions.js';
 
 const defaultState = {
-  currentPlayer: 1
+  currentPlayer: 1,
+  currentPiece: null
 };
 
 export default (oldState = defaultState, action) => {
@@ -12,7 +14,11 @@ export default (oldState = defaultState, action) => {
     case SWITCH_PLAYERS:
       if (oldState.currentPlayer === 1) newState.currentPlayer = 2
       else newState.currentPlayer = 1
+      newState.currentPiece = null;
       return newState
+    case SET_CURRENT_PIECE:
+      newState.currentPiece = action.id;
+      return newState;
     default:
       return oldState;
   }

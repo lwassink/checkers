@@ -17,12 +17,18 @@ class Piece extends React.Component {
       connectDragSource,
       connectDragPreview,
       myTurn } = this.props;
-    const { color, king } = this.props.piece;
+
+    const piece = this.props.piece || {
+      color: null,
+      king: false
+    }
+    const { color, king } = piece;
     let classes = classNames('piece',
       { 'dragging': isDragging },
       { 'light-piece': color === 'light' },
       { 'dark-piece': color === 'dark' },
-      { 'active': myTurn }
+      { 'active': myTurn },
+      { 'king': king }
     )
 
     return connectDragSource(
@@ -30,8 +36,8 @@ class Piece extends React.Component {
         style={{opacity: .99}}>
         {connectDragPreview(
           <div
-            className={classes}
-          />)}
+            className={classes} >
+          </div>)}
       </div>
     );
   }

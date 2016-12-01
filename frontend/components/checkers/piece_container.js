@@ -2,18 +2,21 @@ import { connect } from 'react-redux';
 import { removePiece } from '../../actions/pieces_actions.js';
 import Piece from './piece.jsx';
 
-const mapStateToProps = (state, ownProps) => ({
-  piece: state.pieces[ownProps.id],
-  id: ownProps.id,
-  myTurn: state.pieces[ownProps.id].color === state.players[state.players.currentPlayer].color
-});
+const myTurn = (piece, currentPlayer) => {
+  let myColor;
+  if (piece) myColor = piece.color;
+  return myColor === currentPlayer.color;
+};
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  remove: () => dispatch(removePiece(ownProps.id))
-});
+const mapStateToProps = (state, ownProps) => {
+  return ({
+    piece: state.pieces[ownProps.id],
+    id: ownProps.id,
+    myTurn: myTurn(state.pieces[ownProps.id], state.players[state.players.currentPlayer])
+  });
+}
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(Piece);
 

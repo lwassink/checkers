@@ -1,4 +1,6 @@
-import { MOVE_PIECE, REMOVE_PIECE } from '../actions/pieces_actions.js';
+import { MOVE_PIECE,
+  MAKE_KING,
+  REMOVE_PIECE } from '../actions/pieces_actions.js';
 
 export default (oldState = {}, action) => {
   Object.freeze(oldState);
@@ -10,6 +12,9 @@ export default (oldState = {}, action) => {
       return newState;
     case REMOVE_PIECE:
       delete newState[action.id];
+      return newState;
+    case MAKE_KING:
+      newState[action.id].king = true;
       return newState;
     default:
       return oldState;

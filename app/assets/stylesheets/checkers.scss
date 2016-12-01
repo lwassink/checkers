@@ -25,8 +25,22 @@ $square-size: 60px;
   // box-shadow: 3px 3px 2px black;
 }
 
+.light-piece {
+  background-color: #cc3530;
+}
+
+.dark-piece {
+  background-color: #1f0606;
+}
+
 .active {
   cursor: pointer;
+}
+
+.king {
+  width: 46px;
+  height: 46px;
+  border: 2px solid gold;
 }
 
 .dragging {
@@ -43,14 +57,6 @@ $square-size: 60px;
 
 .droppable {
   background-color: #8a5d38;
-}
-
-.light-piece {
-  background-color: #cc3530;
-}
-
-.dark-piece {
-  background-color: #1f0606;
 }
 
 $length: 8 * $square-size;

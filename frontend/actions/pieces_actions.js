@@ -11,3 +11,9 @@ export const removePiece = (id) => ({
   id
 });
 
+export const MAKE_KING = 'MAKE_KING';
+export const makeKing = (id) => ({
+  type: MAKE_KING,
+  id
+});
+

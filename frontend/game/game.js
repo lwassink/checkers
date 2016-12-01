@@ -18,6 +18,20 @@ class Game {
     return this.midPiece(startPos, pos);
   }
 
+  pieceCanCapture(id, pos) {
+    const piece = _.merge({}, this.pieces[id]);
+    piece.pos = pos;
+    const moves = this.captureMoves(piece);
+
+    for (let j = 0; j < moves.length; j++) {
+      if (this.wouldCapture(piece, moves[j]) &&
+        !this.ocupied(moves[j])) {
+          return true;
+      }
+    }
+    return false;
+  }
+
   allowedMove(piece, pos) {
     const moves = this.moves(piece);
     for (let i = 0; i < moves.length; i++) {
@@ -40,7 +54,8 @@ class Game {
     for (let i = 0; i < pieces.length; i ++) {
       const moves = this.captureMoves(pieces[i]);
       for (let j = 0; j < moves.length; j++) {
-        if (this.wouldCapture(pieces[i], moves[j])) return true;
+        if (this.wouldCapture(pieces[i], moves[j]) &&
+          !this.ocupied(moves[j])) return true;
       }
     }
     return false;
@@ -56,27 +71,35 @@ class Game {
   moves(piece) {
     let moves = [];
     const [Y, X] = piece.pos
+    const lightMoves = [[Y + 1, X + 1], [Y + 1, X - 1]];
+    const darkMoves = [[Y - 1, X + 1], [Y - 1, X - 1]];
 
-    if (piece.color === 'light') {
-      moves = [[Y + 1, X + 1], [Y + 1, X - 1]]
+    if (piece.king) {
+      moves = lightMoves.concat(darkMoves);
+    } else if (piece.color === 'light') {
+      moves = lightMoves;
     } else {
-      moves = [[Y - 1, X + 1], [Y - 1, X - 1]]
+      moves = darkMoves;
     }
 
-    return moves;
+    return this.filterInBounds(moves);
   }
 
   captureMoves(piece) {
-    let moves = [];
     const [Y, X] = piece.pos
+    const lightMoves = [[Y + 2, X + 2], [Y + 2, X - 2]];
+    const darkMoves = [[Y - 2, X + 2], [Y - 2, X - 2]];
+    let moves = [];
 
-    if (piece.color === 'light') {
-      moves = [[Y + 2, X + 2], [Y + 2, X - 2]]
+    if (piece.king) {
+      moves = lightMoves.concat(darkMoves);
+    } else if (piece.color === 'light') {
+      moves = lightMoves;
     } else {
-      moves = [[Y - 2, X + 2], [Y - 2, X - 2]]
+      moves = darkMoves;
     }
 
-    return moves;
+    return this.filterInBounds(moves);
   }
 
   jumps(start, end, color) {
@@ -96,6 +119,15 @@ class Game {
       }
     }
     return false;
+  }
+
+  inBounds(pos) {
+    return pos[0] < 8 && pos[0] >= 0 &&
+      pos[1] < 8 && pos[1] >= 0
+  }
+
+  filterInBounds(posList) {
+    return posList.filter(this.inBounds);
   }
 
   eq(pos1, pos2) {
