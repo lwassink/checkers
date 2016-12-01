@@ -30,13 +30,6 @@ export const squareTarget = {
       currentPiece = id;
     }
 
-    // don't switch players if the current piece can capture again
-    if (currentPiece && game.pieceCanCapture(currentPiece, props.pos)) {
-      props.setCurrentPiece(id);
-    } else {
-      props.switchPlayers();
-    }
-
     // king a piece if it reaches the final row
     if (props.pos[0] === 0 || props.pos[0] === 7) {
       props.makeKing(id);
@@ -44,6 +37,13 @@ export const squareTarget = {
 
     // move the piece
     props.move(monitor.getItem().id);
+
+    // don't switch players if the current piece can capture again
+    if (currentPiece && game.pieceCanCapture(currentPiece, props.pos)) {
+      props.setCurrentPiece(id);
+    } else {
+      props.switchPlayers();
+    }
   },
   canDrop: (props, monitor) => {
     const game = new Game(props.pieces);

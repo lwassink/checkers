@@ -49,6 +49,17 @@ class Game {
     return false
   }
 
+  canMove(color) {
+    const pieces = _.filter(this.pieces, { color });
+    for (let i = 0; i < pieces.length; i ++) {
+      const moves = this.moves(pieces[i]);
+      for (let j = 0; j < moves.length; j++) {
+        if (!this.ocupied(moves[j])) return true;
+      }
+    }
+    return this.canCapture(color);
+  }
+
   canCapture(color) {
     const pieces = _.filter(this.pieces, { color });
     for (let i = 0; i < pieces.length; i ++) {
