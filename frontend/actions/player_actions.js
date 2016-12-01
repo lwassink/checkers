@@ -9,3 +9,9 @@ export const setCurrentPiece = (id) => ({
   id
 });
 
+export const WIN = 'WIN';
+export const win = (id) => ({
+  type: WIN,
+  id
+});
+
