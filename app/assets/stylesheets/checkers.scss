@@ -6,6 +6,7 @@ $square-size: 60px;
   height: 12.5%;
   width: 12.5%;
   position: relative;
+  box-sizing: border-box;
 
   p {
     color: green;
@@ -13,6 +14,24 @@ $square-size: 60px;
     font-size: 30px;
     font-weight: bold;
   }
+}
+
+.dark-square {
+  background-color: #6f3519;
+}
+
+.light-square {
+  background-color: tan;
+}
+
+.droppable {
+  box-shadow: 0 0 25px white;
+  z-index: 100;
+  border: 2px solid white;
+}
+
+.hover {
+  background-color: #8a5d38;
 }
 
 .piece {
@@ -25,6 +44,7 @@ $square-size: 60px;
   left: 50%;
   top: 50%;
   transform: translate(-50%,-50%);
+  box-sizing: border-box;
 }
 
 .light-piece {
@@ -41,25 +61,11 @@ $square-size: 60px;
 }
 
 .king {
-  width: 46px;
-  height: 46px;
   border: 2px solid gold;
 }
 
 .dragging {
   opacity: 0.3;
-}
-
-.dark-square {
-  background-color: #6f3519;
-}
-
-.light-square {
-  background-color: tan;
-}
-
-.droppable {
-  background-color: #8a5d38;
 }
 
 $length: 8 * $square-size;

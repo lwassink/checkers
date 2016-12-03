@@ -30,7 +30,8 @@ class Square extends React.Component {
     const cls = classNames(
       color,
       'square',
-      {droppable: isOver && canDrop}
+      { hover: isOver && canDrop },
+      { droppable: canDrop }
     );
 
     const piece = ocupied ?
