@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
     piece: state.pieces[ownProps.id],
     id: ownProps.id,
     myTurn: myTurn(state.pieces[ownProps.id], state.players[state.players.currentPlayer]),
-    currentPiece: state.players.currentPiece
+    currentPiece: state.players.currentPiece,
+    pieces: state.pieces
   });
 }
 

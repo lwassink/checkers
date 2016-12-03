@@ -6,16 +6,21 @@ export const pieceSource = {
   beginDrag: (props, monitor, component) => ({
     id: props.id
   }),
+
   canDrag: props => {
-    if (props.myTurn) {
-      if (props.currentPiece) {
-        return props.currentPiece === props.id;
-      }
-      return true;
+    const game = new Game(props.pieces);
+    const myColor = props.piece.color;
+
+    if (props.currentPiece) return props.currentPiece === props.id;
+
+    if (game.canCapture(myColor) && props.myTurn) {
+      return game.pieceCanCapture(props.id, props.piece.pos);
     }
-    return false;
+
+    return props.myTurn;
   }
 };
+
 
 export const squareTarget = {
   drop: (props, monitor, component) => {

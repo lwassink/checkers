@@ -3,8 +3,8 @@ import classNames from 'classnames';
 
 const CurrentPlayer = ({ cls, color }) => (
   <p className='display'>
-    Current Player: <span
-      className={cls}>
+    Current Player:&nbsp;
+    <span className={cls}>
       {color}
     </span>
   </p>
@@ -12,10 +12,11 @@ const CurrentPlayer = ({ cls, color }) => (
 
 const Winner = ({ cls, color }) => (
   <p className='display'>
-    Winner: <span
+    <span
       className={cls}>
-      {color}
+      {color}&nbsp;
     </span>
+    Wins
   </p>
 );
 
@@ -31,13 +32,20 @@ class Display extends React.Component {
     const { currentColor, winnerColor } = this.props;
     let color = 'Red';
 
+    let winner;
     if (winnerColor) {
       if (winnerColor === 'dark') color = 'Black';
-      return <Winner cls={winnerColor} color={color} />
+      winner = <Winner cls={winnerColor} color={color} />
     } else {
       if (currentColor === 'dark') color = 'Black';
-      return <CurrentPlayer cls={currentColor} color={color} />
+      winner = <CurrentPlayer cls={currentColor} color={color} />
     }
+
+    return (
+      <div className="flip">
+        {winner}
+      </div>
+    );
   }
 }
 
