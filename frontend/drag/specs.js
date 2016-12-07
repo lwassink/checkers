@@ -11,6 +11,8 @@ export const pieceSource = {
     const game = new Game(props.pieces);
     const myColor = props.piece.color;
 
+    if (props.winner) return false;
+
     if (props.currentPiece) return props.currentPiece === props.id;
 
     if (game.canCapture(myColor) && props.myTurn) {
