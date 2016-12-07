@@ -373,3 +373,10 @@ Completed 200 OK in 103ms (Views: 99.2ms | ActiveRecord: 0.0ms)
 >>>>>>> 0c7b87a8a25cfeea6feaea865126b674a61824f0
 
 
+Started GET "/" for ::1 at 2016-12-07 12:11:26 -0800
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 1131ms (Views: 1114.0ms | ActiveRecord: 0.0ms)
+
+
