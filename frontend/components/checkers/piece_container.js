@@ -15,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
     myTurn: myTurn(state.pieces[ownProps.id], state.players[state.players.currentPlayer]),
     currentPiece: state.players.currentPiece,
     pieces: state.pieces,
-    winner: state.players.winner
+    winner: state.players.winner,
+    computer: state.players[state.players.currentPlayer].type === 'computer'
   });
 }
 

@@ -52,11 +52,13 @@ darkLocations.forEach((pos, idx) => {
 const players = {
   1: {
     id: 1,
-    color: 'light'
+    color: 'light',
+    type: 'human'
   },
   2: {
     id: 2,
-    color: 'dark'
+    color: 'dark',
+    type: 'computer'
   },
   currentPlayer: 1
 }

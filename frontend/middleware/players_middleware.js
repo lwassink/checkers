@@ -11,10 +11,17 @@ export default ({ getState, dispatch }) => next => action => {
     case SWITCH_PLAYERS:
       const game = new Game(getState().pieces);
       const players = getState().players;
-      const otherColor = players[other(players.currentPlayer)].color;
+      const otherPlayer = other(players.currentPlayer);
+      const computerNext = players[otherPlayer].type === 'computer';
+      const otherColor = players[otherPlayer].color;
 
       if (!game.canMove(otherColor)) {
         dispatch(win(players.currentPlayer));
+        return next(action);
+      }
+
+      if (computerNext) {
+        alert('Computer turn');
       }
 
       return next(action);

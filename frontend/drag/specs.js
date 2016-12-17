@@ -12,6 +12,7 @@ export const pieceSource = {
     const myColor = props.piece.color;
 
     if (props.winner) return false;
+    // if (props.computer) return false;
 
     if (props.currentPiece) return props.currentPiece === props.id;
 
