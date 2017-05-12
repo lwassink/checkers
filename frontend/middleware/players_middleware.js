@@ -1,5 +1,6 @@
 import { SWITCH_PLAYERS, win } from '../actions/player_actions.js';
 import Game from '../game/game.js';
+import makeMove from '../game/ai.js';
 
 function other(id) {
   if (id === 1) return 2;
@@ -21,7 +22,7 @@ export default ({ getState, dispatch }) => next => action => {
       }
 
       if (computerNext) {
-        alert('Computer turn');
+        makeMove(otherPlayer);
       }
 
       return next(action);

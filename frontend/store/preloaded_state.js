@@ -35,7 +35,8 @@ lightLocations.forEach((pos, idx) => {
     id: idx + 1,
     color: 'light',
     pos: pos,
-    king: false
+    king: false,
+    player: 1
   };
 });
 
@@ -44,7 +45,8 @@ darkLocations.forEach((pos, idx) => {
     id: idx + 13,
     color: 'dark',
     pos: pos,
-    king: false
+    king: false,
+    player: 2
   };
 });
 
