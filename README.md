@@ -1,24 +1,5 @@
-# README
+# KingMe
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+KingMe is a purely frontend, fully playable, checkers app.
+It is served by Ruby on Rails and written using React, Redux, and React DnD.
+I created it because I was interested in learning how to write a drag-and-drop interface in React.
